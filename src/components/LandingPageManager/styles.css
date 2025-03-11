@@ -1,0 +1,12 @@
+/* Scoped styles for the Landing Page Manager component */
+.landing-page-manager-container {
+    width: 100%;
+    height: 100%;
+    /* Ensure styles are scoped to this container */
+}
+
+.landing-page-manager-container * {
+    box-sizing: border-box;
+}
+
+/* Add any other component-specific styles here */

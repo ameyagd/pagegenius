@@ -1,0 +1,83 @@
+.mantine-react-table {
+    /* Override default table styles to make it more compact */
+    --mantine-spacing-xs: 6px;
+    --mantine-spacing-sm: 8px;
+}
+
+/* Reduce cell padding to make rows more compact */
+.mantine-react-table .mantine-TableTr-root td,
+.mantine-react-table .mantine-TableTr-root th {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+/* Ensure text remains readable with reduced spacing */
+.mantine-react-table .mantine-TableTr-root td .mantine-Text-root,
+.mantine-react-table .mantine-TableTr-root th .mantine-Text-root {
+    line-height: 1.4;
+}
+
+/* Optimize column widths for specific columns with shorter content */
+.mantine-react-table [data-column-id='status'],
+.mantine-react-table [data-column-id='isAiGenerated'] {
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+}
+
+/* Optimize column widths for date columns */
+.mantine-react-table [data-column-id='createdAt'],
+.mantine-react-table [data-column-id='updatedAt'] {
+    width: 130px !important;
+    min-width: 130px !important;
+    max-width: 130px !important;
+}
+
+/* Optimize column widths for numeric data columns */
+.mantine-react-table [data-column-id='pageViews'],
+.mantine-react-table [data-column-id='clicks'],
+.mantine-react-table [data-column-id='adViews'],
+.mantine-react-table [data-column-id='conversions'],
+.mantine-react-table [data-column-id='ctr'],
+.mantine-react-table [data-column-id='conversionValue'] {
+    width: 100px !important;
+    min-width: 100px !important;
+    max-width: 100px !important;
+}
+
+/* Ensure sorting icons are consistently placed on the right side of column headers */
+.mantine-react-table .mantine-TableHeadCell-Content {
+    justify-content: space-between !important;
+}
+
+/* Ensure the sort icon container is properly sized and aligned */
+.mantine-react-table .mantine-TableHeadCell-SortIcon {
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+}
+
+/* Compact back button styles */
+.compact-back-button {
+    font-size: 14px;
+    padding: 4px 9px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #d9d9d9;
+}
+
+/* Back button container for proper alignment with title */
+.editor-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.editor-header .ant-btn {
+    margin-right: 16px;
+}
+
+.editor-header .ant-typography {
+    margin: 0;
+}
