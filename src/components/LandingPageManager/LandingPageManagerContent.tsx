@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Input, Space, Modal, Select, message, Card, Row, Col, Statistic, Tag, Typography } from 'antd';
+import React, { useState } from 'react';
+import { Button, Input, Space, Select, Card, Typography } from 'antd';
 import {
     PlusOutlined,
     SearchOutlined,
-    FileTextOutlined,
-    CheckCircleOutlined,
-    ClockCircleOutlined,
-    CloseCircleOutlined,
-    LineChartOutlined,
 } from '@ant-design/icons';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+// import { useNavigate } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import MainLayout from './components/Layout/MainLayout';
 import LandingPagesTable from './components/LandingPages/LandingPagesTable';
-import { fetchLandingPages, fetchCustomers, fetchDomains, fetchLandingPage, findTopPerformingPage } from './api/services';
+import { fetchLandingPages, fetchCustomers, fetchDomains } from './api/services';
 import { LandingPage } from './types';
 import LandingPageEditor from './components/LandingPages/LandingPageEditor';
 import AnalyticsDrawer from './components/LandingPages/AnalyticsDrawer';
 
 const { Search } = Input;
 const { Option } = Select;
-const { Title, Text } = Typography;
+const {  Text } = Typography;
 
 interface LandingPageManagerContentProps {
     onPageCreated?: (pageId: string) => void;
@@ -31,6 +26,7 @@ interface LandingPageManagerContentProps {
         name: string;
         email: string;
     };
+    onLogout: () => void;
 }
 
 const LandingPageManagerContent: React.FC<LandingPageManagerContentProps> = ({
@@ -42,16 +38,16 @@ const LandingPageManagerContent: React.FC<LandingPageManagerContentProps> = ({
         email: 'partner@example.com',
     },
 }) => {
-    const queryClient = useQueryClient();
+    // const queryClient = useQueryClient();
     const [searchTerm, setSearchTerm] = useState('');
     const [pageToDuplicate, setPageToDuplicate] = useState<LandingPage | null>(null);
     const [isCreateMode, setIsCreateMode] = useState(false);
     const [editPageId, setEditPageId] = useState<string | null>(null);
     const [isDuplicating, setIsDuplicating] = useState(false);
     const [quickAnalyticsPage, setQuickAnalyticsPage] = useState<string | null>(null);
-    const [isLoadingTopPage, setIsLoadingTopPage] = useState(false);
+    // const [ setIsLoadingTopPage] = useState(false);
     const [topPerformingPageId, setTopPerformingPageId] = useState<string | null>(null);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const { logout } = useAuth();
 
     // Filter states for the landing pages
@@ -87,23 +83,23 @@ const LandingPageManagerContent: React.FC<LandingPageManagerContentProps> = ({
     const landingPages = fetchedLandingPages;
 
     // Calculate statistics
-    const totalPages = landingPages.length;
-    const approvedPages = landingPages.filter((page) => page.status === 'approved').length;
-    const underReviewPages = landingPages.filter((page) => page.status === 'under_review').length;
-    const rejectedPages = landingPages.filter((page) => page.status === 'rejected').length;
+    // const totalPages = landingPages.length;
+    // const approvedPages = landingPages.filter((page) => page.status === 'approved').length;
+    // const underReviewPages = landingPages.filter((page) => page.status === 'under_review').length;
+    // const rejectedPages = landingPages.filter((page) => page.status === 'rejected').length;
 
-    const getStatusColor = (status: string) => {
-        switch (status) {
-            case 'approved':
-                return 'green';
-            case 'rejected':
-                return 'red';
-            case 'under_review':
-                return 'orange';
-            default:
-                return 'default';
-        }
-    };
+    // const getStatusColor = (status: string) => {
+    //     switch (status) {
+    //         case 'approved':
+    //             return 'green';
+    //         case 'rejected':
+    //             return 'red';
+    //         case 'under_review':
+    //             return 'orange';
+    //         default:
+    //             return 'default';
+    //     }
+    // };
 
     const handleSearch = (value: string) => {
         setSearchTerm(value);
@@ -140,28 +136,28 @@ const LandingPageManagerContent: React.FC<LandingPageManagerContentProps> = ({
         setSelectedDomainId(value);
     };
 
-    const handleViewTopPerformingPage = async () => {
-        try {
-            setIsLoadingTopPage(true);
-            const topPageId = await findTopPerformingPage();
+    // const handleViewTopPerformingPage = async () => {
+    //     try {
+    //         setIsLoadingTopPage(true);
+    //         const topPageId = await findTopPerformingPage();
 
-            if (topPageId) {
-                // Set the top performing page ID
-                setTopPerformingPageId(topPageId);
+    //         if (topPageId) {
+    //             // Set the top performing page ID
+    //             setTopPerformingPageId(topPageId);
 
-                // Open the page in edit mode to view its content
-                handleEditPage(topPageId);
-                message.success('Showing top performing landing page based on conversion value');
-            } else {
-                message.info('No approved landing pages found to analyze');
-            }
-        } catch (error) {
-            message.error('Failed to find top performing page');
-            console.error(error);
-        } finally {
-            setIsLoadingTopPage(false);
-        }
-    };
+    //             // Open the page in edit mode to view its content
+    //             handleEditPage(topPageId);
+    //             message.success('Showing top performing landing page based on conversion value');
+    //         } else {
+    //             message.info('No approved landing pages found to analyze');
+    //         }
+    //     } catch (error) {
+    //         message.error('Failed to find top performing page');
+    //         console.error(error);
+    //     } finally {
+    //         setIsLoadingTopPage(false);
+    //     }
+    // };
 
     const handlePageCreated = (pageId: string) => {
         setIsCreateMode(false);

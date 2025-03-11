@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Input, Button, Select, message, Space, Alert, Row, Col, Card, Typography, Tabs, Divider, Tag } from 'antd';
 import {
-    ArrowLeftOutlined,
     SendOutlined,
     ReloadOutlined,
     SaveOutlined,
@@ -41,7 +40,7 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
     mode,
     pageId,
     pageToDuplicate,
-    isTopPerforming = false,
+    // isTopPerforming = false,
     onClose,
     onPageCreated,
     onPageUpdated,
@@ -103,7 +102,7 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
     // Update landing page mutation
     const updateMutation = useMutation({
         mutationFn: (values: any) => updateLandingPage(pageId || '', values),
-        onSuccess: (data) => {
+        onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['landingPages'] });
             queryClient.invalidateQueries({ queryKey: ['landingPage', pageId] });
             message.success('Landing page updated successfully');
@@ -187,7 +186,7 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
     }, [pageToDuplicate, form, mode]);
 
     // Update preview content when form values change
-    const handleFormValuesChange = (changedValues: any, allValues: any) => {
+    const handleFormValuesChange = (allValues: any) => {
         setPreviewContent({
             title: allValues.title || '',
             content: allValues.content || '',
@@ -450,7 +449,7 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
                                     Publish
                                 </Button>
 
-                                <Button icon={<SaveOutlined />} block onClick={handleSaveAsDraft}>
+                                <Button icon={<SaveOutlined />} block>
                                     Save as Draft
                                 </Button>
 
@@ -579,29 +578,29 @@ const handlePreview = () => {
 };
 
 // Add a function to handle saving as draft
-const handleSaveAsDraft = () => {
-    const values = form.getFieldsValue();
-    const keywords = values.keywords.split(',').map((k: string) => k.trim());
+// const handleSaveAsDraft = () => {
+//     const values = form.getFieldsValue();
+//     const keywords = values.keywords.split(',').map((k: string) => k.trim());
 
-    if (mode === 'create' || mode === 'duplicate') {
-        createMutation.mutate({
-            ...values,
-            slug: values.title.toLowerCase().replace(/\s+/g, '-'),
-            keywords,
-            status: 'draft', // Save as draft instead of under_review
-            authorId: partnerInfo?.id || '',
-            isAiGenerated: mode === 'create' && activeTab === 'ai',
-            isDuplicated: mode === 'duplicate',
-            originalPageId: mode === 'duplicate' && pageToDuplicate ? pageToDuplicate.id : undefined,
-        });
-    } else {
-        updateMutation.mutate({
-            ...values,
-            keywords,
-            status: 'draft', // Save as draft instead of under_review
-        });
-    }
-};
+//     if (mode === 'create' || mode === 'duplicate') {
+//         createMutation.mutate({
+//             ...values,
+//             slug: values.title.toLowerCase().replace(/\s+/g, '-'),
+//             keywords,
+//             status: 'draft', // Save as draft instead of under_review
+//             authorId: partnerInfo?.id || '',
+//             isAiGenerated: mode === 'create' && activeTab === 'ai',
+//             isDuplicated: mode === 'duplicate',
+//             originalPageId: mode === 'duplicate' && pageToDuplicate ? pageToDuplicate.id : undefined,
+//         });
+//     } else {
+//         updateMutation.mutate({
+//             ...values,
+//             keywords,
+//             status: 'draft', // Save as draft instead of under_review
+//         });
+//     }
+// };
 
 // Add a function to handle archiving
 const handleArchive = () => {

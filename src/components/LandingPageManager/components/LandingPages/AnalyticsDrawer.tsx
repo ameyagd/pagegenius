@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Drawer, Card, Row, Col, Statistic, Button, Space, Select, Table, Alert, Typography, Form, DatePicker, Radio, Divider } from 'antd';
-import { LineChartOutlined, BarChartOutlined, PieChartOutlined, FilterOutlined, EditOutlined } from '@ant-design/icons';
+import { LineChartOutlined, BarChartOutlined, PieChartOutlined, EditOutlined } from '@ant-design/icons';
 import { fetchLandingPage, fetchPageAnalytics } from '../../api/services';
 
 const { Option } = Select;
-const { Title, Text } = Typography;
+const { Text } = Typography;
 const { RangePicker } = DatePicker;
 
 interface AnalyticsDrawerProps {

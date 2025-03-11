@@ -3,7 +3,7 @@ import { Modal, Button, Tag, message, Space, Typography } from 'antd';
 import { CopyOutlined, ReloadOutlined, SaveOutlined, CloseOutlined } from '@ant-design/icons';
 import { generateKeywords } from '../../api/keywordService';
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 interface GenerateKeywordsModalProps {
     visible: boolean;

@@ -15,7 +15,7 @@ interface LandingPagesTableProps {
     onEditPage: (pageId: string) => void;
 }
 
-export const LandingPagesTable: React.FC<LandingPagesTableProps> = ({ data, isLoading, onDuplicate, onPageUpdated, onEditPage }) => {
+export const LandingPagesTable: React.FC<LandingPagesTableProps> = ({ data, isLoading, onDuplicate, onEditPage }) => {
     const [analyticsDrawerPage, setAnalyticsDrawerPage] = useState<string | null>(null);
 
     // Fetch analytics data for all pages
@@ -348,11 +348,11 @@ export const LandingPagesTable: React.FC<LandingPagesTableProps> = ({ data, isLo
     ];
 
     // Add a handler for page updates
-    const handlePageUpdated = (pageId: string) => {
-        if (onPageUpdated) {
-            onPageUpdated(pageId);
-        }
-    };
+    // const handlePageUpdated = (pageId: string) => {
+    //     if (onPageUpdated) {
+    //         onPageUpdated(pageId);
+    //     }
+    // };
 
     return (
         <>
@@ -382,14 +382,14 @@ export const LandingPagesTable: React.FC<LandingPagesTableProps> = ({ data, isLo
                     style: { maxHeight: '800px' },
                 }}
                 // Configure sorting icon placement - this applies to all sorted headers
-                mantineSortedHeaderCellProps={{
-                    style: {
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'flex-end', // Always place sort icon on the right
-                        width: '100%',
-                    },
-                }}
+                // mantineSortedHeaderCellProps={{
+                //     style: {
+                //         display: 'flex',
+                //         alignItems: 'center',
+                //         justifyContent: 'flex-end', // Always place sort icon on the right
+                //         width: '100%',
+                //     },
+                // }}
                 // Configure table props for consistent spacing and layout
                 mantineTableProps={{
                     withColumnBorders: true,

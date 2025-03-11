@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(false);
   }, []);
 
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (email: string, /*password: string*/): Promise<boolean> => {
     try {
       // In a real app, this would be an API call
       // For now, we'll simulate a successful login

@@ -42,7 +42,7 @@ const EditLandingPageDrawer: React.FC<EditLandingPageDrawerProps> = ({ visible, 
     // Update landing page mutation
     const updateMutation = useMutation({
         mutationFn: (values: any) => updateLandingPage(pageId, values),
-        onSuccess: (data) => {
+        onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['landingPages'] });
             queryClient.invalidateQueries({ queryKey: ['landingPage', pageId] });
             message.success('Landing page updated successfully');

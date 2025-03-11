@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Drawer, Button, Space, Alert, Typography, Tag, Divider, Image, Tabs } from 'antd';
+import { Drawer, Button, Space, Alert, Typography, Tag, Divider, Image } from 'antd';
 import { MobileOutlined, DesktopOutlined, EditOutlined, BarChartOutlined } from '@ant-design/icons';
 import { fetchLandingPage } from '../../api/services';
 
 const { Title, Paragraph, Text } = Typography;
-const { TabPane } = Tabs;
+// const { TabPane } = Tabs;
 
 interface PreviewLandingPageDrawerProps {
     visible: boolean;

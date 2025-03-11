@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Drawer, Form, Input, Button, Select, Switch, message, Space, Tabs, Typography } from 'antd';
+import { Drawer, Form, Input, Button, Select, message, Space, Tabs, Typography } from 'antd';
 import { SendOutlined, ReloadOutlined } from '@ant-design/icons';
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { createLandingPage, generateAiContent, fetchCustomers, fetchDomains } from '../../api/services';
 
 const { TextArea } = Input;
@@ -23,9 +23,9 @@ interface CreateLandingPageDrawerProps {
 
 const CreateLandingPageDrawer: React.FC<CreateLandingPageDrawerProps> = ({ visible, onClose, partnerInfo, onPageCreated }) => {
     const [form] = Form.useForm();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const queryClient = useQueryClient();
-    const [isAiGeneration, setIsAiGeneration] = useState(false);
+    // const [isAiGeneration, setIsAiGeneration] = useState(false);
     const [aiPrompt, setAiPrompt] = useState('');
     const [selectedCustomerId, setSelectedCustomerId] = useState<string>('');
     const [activeTab, setActiveTab] = useState('manual');

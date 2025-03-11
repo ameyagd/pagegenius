@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Form, Input, Button, Card, Typography, message, Space, Avatar } from 'antd';
-import { UserOutlined, LockOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Card, Typography, message } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import LandingPageManagerContent from './LandingPageManagerContent';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
