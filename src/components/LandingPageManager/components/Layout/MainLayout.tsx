@@ -18,7 +18,7 @@ interface MainLayoutProps {
     onLogout?: () => void;
 }
 
-export const MainLayout: React.FC<MainLayoutProps> = ({ children, title, partnerInfo, onLogout }) => {
+export const MainLayout: React.FC<MainLayoutProps> = ({ children, partnerInfo, onLogout }) => {
     const [selectedCustomerId, setSelectedCustomerId] = useState<string | null>(null);
     const [selectedDomainId, setSelectedDomainId] = useState<string | null>(null);
 
@@ -73,9 +73,9 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, title, partner
                     </Space>
                 </Space>
             </Header>
-            <Content style={{ background: '#f0f2f5', width: '100%' }}>
+            <Content style={{ background: '#f0f2f5', width: 'auto', margin: '5px 15px' }}>
                 <div style={{ background: '#fff', padding: '24px', minHeight: 280, width: '100%', marginTop: '10px' }}>
-                    <Title level={4}>{title}</Title>
+                    {/* <Title level={4}>{title}</Title> */}
                     {children}
                 </div>
             </Content>
