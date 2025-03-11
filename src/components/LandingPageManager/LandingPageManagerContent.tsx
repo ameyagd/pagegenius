@@ -253,7 +253,7 @@ const LandingPageManagerContent: React.FC<LandingPageManagerContentProps> = ({
 
                 {/* Customer and Domain Filters */}
                 <Card style={{ marginBottom: 16 }}>
-                    <Space style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
+                    <Space style={{ display: 'flex', justifyContent: 'space-between'}}>
                         <Space size='large'>
                             <div>
                                 <Text strong>Customer:</Text>

@@ -322,9 +322,9 @@ export const LandingPagesTable: React.FC<LandingPagesTableProps> = ({ data, isLo
             },
             mantineTableBodyCellProps: { align: 'left' },
             // Explicit sizing for date columns
-            size: 80,
-            minSize: 80,
-            maxSize: 80,
+            size: 60,
+            minSize: 60,
+            maxSize: 60,
             Cell: ({ row }) => new Date(row.original.createdAt).toLocaleDateString(),
         },
         {
@@ -340,9 +340,9 @@ export const LandingPagesTable: React.FC<LandingPagesTableProps> = ({ data, isLo
             },
             mantineTableBodyCellProps: { align: 'left' },
             // Explicit sizing for date columns
-            size: 80,
-            minSize: 80,
-            maxSize: 80,
+            size: 60,
+            minSize: 60,
+            maxSize: 60,
             Cell: ({ row }) => new Date(row.original.updatedAt).toLocaleDateString(),
         },
     ];
@@ -368,15 +368,12 @@ export const LandingPagesTable: React.FC<LandingPagesTableProps> = ({ data, isLo
                 initialState={{
                     density: 'xs', // Use extra small density for compact rows
                     sorting: [{ id: 'updatedAt', desc: true }],
-                    columnVisibility: {
-                        // adViews: false,
-                        // conversionValue: false,
-                    },
                 }}
                 enableHiding={false}
                 enablePagination
                 positionPagination='bottom'
                 enableRowVirtualization
+                enableTopToolbar={false}
                 // Configure table layout and styling using MRT props
                 mantineTableContainerProps={{
                     style: { maxHeight: '800px' },
@@ -396,7 +393,7 @@ export const LandingPagesTable: React.FC<LandingPagesTableProps> = ({ data, isLo
                     highlightOnHover: true,
                     striped: false,
                     sx: {
-                        tableLayout: 'fixed', // Use fixed layout for consistent column widths
+                        // tableLayout: 'fixed', // Use fixed layout for consistent column widths
                         width: '100%', // Ensure table takes full width
                     },
                 }}
