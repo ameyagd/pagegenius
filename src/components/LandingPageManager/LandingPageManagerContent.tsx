@@ -351,7 +351,7 @@ const LandingPageManagerContent: React.FC<LandingPageManagerContentProps> = ({
     };
 
     return (
-        <MainLayout title="Landing Pages" partnerInfo={partnerInfo} onLogout={handleLogout}>
+        <MainLayout title="" partnerInfo={partnerInfo} onLogout={handleLogout}>
             {showEditor ? renderEditor() : renderLandingPagesList()}
 
             {/* Quick Analytics Drawer */}

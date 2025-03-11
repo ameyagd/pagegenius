@@ -373,6 +373,7 @@ export const LandingPagesTable: React.FC<LandingPagesTableProps> = ({ data, isLo
                         // conversionValue: false,
                     },
                 }}
+                enableHiding={false}
                 enablePagination
                 positionPagination='bottom'
                 enableRowVirtualization

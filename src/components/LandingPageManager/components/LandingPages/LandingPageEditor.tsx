@@ -54,7 +54,7 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
     const queryClient = useQueryClient();
     const [form] = Form.useForm();
     const [selectedCustomerId, setSelectedCustomerId] = useState<string>('');
-    const [activeTab, setActiveTab] = useState('manual');
+    const [activeTab, setActiveTab] = useState('ai');
     const [aiPrompt, setAiPrompt] = useState('');
     const [isKeywordsModalVisible, setIsKeywordsModalVisible] = useState(false);
     const [previewContent, setPreviewContent] = useState({
@@ -243,24 +243,7 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
     const renderPreview = () => {
         return (
             <div className='landing-page-preview'>
-                <Tabs defaultActiveKey='desktop'>
-                    <TabPane tab='Desktop Preview' key='desktop'>
-                        <div className='preview-container desktop'>
-                            {previewContent.imageUrl && (
-                                <div className='preview-image'>
-                                    <img src={previewContent.imageUrl} alt={previewContent.title} />
-                                </div>
-                            )}
-                            <div className='preview-title'>
-                                <h1>{previewContent.title}</h1>
-                            </div>
-                            <div className='preview-content'>
-                                {previewContent.content.split('\n').map((paragraph, index) => (
-                                    <p key={index}>{paragraph}</p>
-                                ))}
-                            </div>
-                        </div>
-                    </TabPane>
+                <Tabs defaultActiveKey='mobile'>
                     <TabPane tab='Mobile Preview' key='mobile'>
                         <div className='preview-container mobile'>
                             <div className='mobile-frame'>
@@ -277,6 +260,23 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
                                         <p key={index}>{paragraph}</p>
                                     ))}
                                 </div>
+                            </div>
+                        </div>
+                    </TabPane>
+                    <TabPane tab='Desktop Preview' key='desktop'>
+                        <div className='preview-container desktop'>
+                            {previewContent.imageUrl && (
+                                <div className='preview-image'>
+                                    <img src={previewContent.imageUrl} alt={previewContent.title} />
+                                </div>
+                            )}
+                            <div className='preview-title'>
+                                <h1>{previewContent.title}</h1>
+                            </div>
+                            <div className='preview-content'>
+                                {previewContent.content.split('\n').map((paragraph, index) => (
+                                    <p key={index}>{paragraph}</p>
+                                ))}
                             </div>
                         </div>
                     </TabPane>
@@ -412,19 +412,20 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
             ) : (
                 <Row gutter={[24, 24]}>
                     <Col xs={24} lg={10}>
-                        <Card title={`${mode === 'duplicate' ? 'Duplicate' : mode === 'edit' ? 'Edit' : 'Create'} Landing Page Content`} bordered={false}>
+                        <Card title='Content' bordered={false}>
                             {mode === 'edit' && page?.status === 'rejected' && (
                                 <Alert message='Rejection Reason' description={page.rejectionReason} type='error' showIcon style={{ marginBottom: 16 }} />
                             )}
 
                             {mode === 'create' ? (
                                 <Tabs activeKey={activeTab} onChange={setActiveTab}>
-                                    <TabPane tab='Manual Creation' key='manual'>
-                                        {renderFormFields()}
-                                    </TabPane>
                                     <TabPane tab='AI Generation' key='ai'>
                                         {renderAiTab()}
                                     </TabPane>
+                                    <TabPane tab='Manual Creation' key='manual'>
+                                        {renderFormFields()}
+                                    </TabPane>
+                                    
                                 </Tabs>
                             ) : (
                                 renderFormFields()
