@@ -70,7 +70,7 @@ export const LandingPagesTable: React.FC<LandingPagesTableProps> = ({ data, isLo
                     <Tooltip title='Edit'>
                         <Button icon={<EditOutlined />} onClick={() => onEditPage(row.original.id)} />
                     </Tooltip>
-                    <Tooltip title='Duplicate'>
+                    <Tooltip title='Clone'>
                         <Button icon={<CopyOutlined />} onClick={() => onDuplicate(row.original)} />
                     </Tooltip>
                     <Tooltip title='Analytics'>

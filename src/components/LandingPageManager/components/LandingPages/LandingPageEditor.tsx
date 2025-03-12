@@ -379,7 +379,7 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
     };
 
     return (
-        <div className='landing-page-editor-container'>
+        <div className='landing-page-editor-container' style={{padding:'20px', borderRadius: '10px'}}>
             <div className='editor-header'>
                 <Title level={4}>{getEditorTitle()}</Title>
             </div>
@@ -411,7 +411,7 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
             ) : (
                 <Row gutter={[24, 24]}>
                     <Col xs={24} lg={10}>
-                        <Card title='Content' bordered={false}>
+                        <Card title='Content'>
                             {mode === 'edit' && page?.status === 'rejected' && (
                                 <Alert message='Rejection Reason' description={page.rejectionReason} type='error' showIcon style={{ marginBottom: 16 }} />
                             )}
@@ -432,12 +432,12 @@ const LandingPageEditor: React.FC<LandingPageEditorProps> = ({
                         </Card>
                     </Col>
                     <Col xs={24} lg={10}>
-                        <Card title='Live Preview' bordered={false}>
+                        <Card title='Live Preview'>
                             {renderPreview()}
                         </Card>
                     </Col>
                     <Col xs={24} lg={4}>
-                        <Card title='Actions' bordered={false}>
+                        <Card title='Actions'>
                             <Space direction='vertical' style={{ width: '100%' }}>
                                 <Button
                                     type='primary'

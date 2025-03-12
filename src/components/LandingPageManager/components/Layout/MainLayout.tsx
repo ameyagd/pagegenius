@@ -73,8 +73,8 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, partnerInfo, o
                     </Space>
                 </Space>
             </Header>
-            <Content style={{ background: '#f0f2f5', width: 'auto', margin: '5px 15px' }}>
-                <div style={{ background: '#fff', padding: '24px', minHeight: 280, width: '100%', marginTop: '10px' }}>
+            <Content style={{ background: '#f0f2f5', width: 'auto', margin: '15px' }}>
+                <div style={{ minHeight: 280 }}>
                     {/* <Title level={4}>{title}</Title> */}
                     {children}
                 </div>
